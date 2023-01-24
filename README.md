@@ -10,4 +10,5 @@ Clone or fork the wifi-password-manager repository to create a local copy of the
 <ul>
     <li>Before you run the docker compose you need to create the `.env` in `backend/prod`. You can find example in `examples/backend/.env`</li>
     <li>Build and run application using `docker-compose up -d --build` command</li>
+    <li>Set ansible playbook to update wifi password on WLC controller</li>
 </ul>
