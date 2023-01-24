@@ -1,3 +1,4 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/waschlmihael/wifi-password-manager)
 <h1>Wifi password manager</h1>
 <h2>Use case</h2>
 Application is useful for daily updating wifi password on the WLC controller. Updated password is than send to the web application and 
