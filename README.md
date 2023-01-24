@@ -1,11 +1,13 @@
-```
-Development enviroment
-```
-Za zagon development okolja je potrebno v mapi `dev` ustvariti `.env` datoteko po zgledu, ki je v mapi `examples/backend/.env`"
+<h1>Wifi password manager</h1>
+<h2>Instalation</h2>
+<ul>
+<li>Docker 20.10.21 or later must be instlled</li>
 
-```
-Kubernetes
-```
-Za inštalacijo rešitve na kubernetes je potrebno ustvariti secrete po zgledih, ki so v mapi `secrets_example`
+Clone or fork the wifi-password-manager repository to create a local copy of the scripts to work with.
+</ul>
 
-
+<h2>Usage</h2>
+<ul>
+    <li>Before you run the docker compose you need to create the `.env` in `backend/prod`. You can find example in `examples/backend/.env`</li>
+    <li>Build and run application using `docker-compose up -d --build` command</li>
+</ul>
