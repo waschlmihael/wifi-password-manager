@@ -1,0 +1,62 @@
+version: "3"
+services:
+  #  POSTGRES DATABASE CONTAINER
+  db:
+    image: postgres
+    restart: always
+    container_name: wifiGesloDbProd
+    env_file:
+      - backend/prod/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - networkWifiGeslo
+
+  #  BACKEND DJANGO CONTAINER
+  backend:
+    depends_on:
+      - db
+    build:
+      context: ./backend
+      dockerfile: ./prod/Dockerfile
+    container_name: wifiGesloBackendProd
+    image: wifigeslo-backend-prod
+    env_file:
+      - backend/prod/.env
+    volumes:
+      - wifigeslo_volume_backend:/app/staticfiles
+      - ./backend/log:/app/backend/log
+    ports:
+      - "8000:8000"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && chmod +x /app/collectstatic.sh && /app/collectstatic.sh && /app/prod/entrypoint.sh"
+    networks:
+      - networkWifiGeslo
+
+  #  FRONTEND REACT CONTAINER
+  nginx:
+    build:
+      context: .
+      dockerfile: ./frontend/prod/Dockerfile
+    container_name: wifiNginx
+    image: wifigeslo-nginx-prod:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - wifigeslo_volume_backend:/backend/staticfiles
+    environment:
+      - NODE_ENV=prod
+    depends_on:
+      - backend
+    networks:
+      - networkWifiGeslo
+networks:
+  networkWifiGeslo:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  wifigeslo_volume_backend:
+  log_volume:

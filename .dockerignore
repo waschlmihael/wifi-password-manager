@@ -1,0 +1,15 @@
+**/Dockerfile
+.dockerignore
+.env.prod
+**/venv
+.venv
+
+# JS stuff
+**/node_modules
+
+# Dev stuff
+.git
+.gitignore
+LICENSE
+README.md
+**/.idea/

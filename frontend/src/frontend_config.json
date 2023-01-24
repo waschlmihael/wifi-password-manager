@@ -1,0 +1,5 @@
+{
+  "heading": "Wifi password",
+  "initialMessage": "Select wifi ssid",
+  "secondMessage": "Scan QR code to get access to wifi"
+}
